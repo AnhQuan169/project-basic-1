@@ -9,19 +9,28 @@ class MyComponent extends React.Component {
         fragment
     */
     state = {
-        arrayjobs:[
+        arrJobs:[
             {id:'1',title:'Developer',salary:'500'},
             {id:'2',title:'Tester',salary:'800'},
             {id:'3',title:'Project Manager', salary:'1500'},
         ]
     }  
+
+    addNewJob = (job) => {
+        //Cách 1:
+        this.setState({
+            arrJobs: [...this.state.arrJobs,job]
+        })
+    }
     
     render() {
         return (    
             <>
-                <AddComponent />
+                <AddComponent 
+                    addNewJob={this.addNewJob}
+                />
                 <ChildComponent
-                    arrJobs={this.state.arrayjobs}
+                    arrJobs={this.state.arrJobs}
                 />  
             </>
         )
