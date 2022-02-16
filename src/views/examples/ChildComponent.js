@@ -1,60 +1,67 @@
 import React from 'react';
 
-// class ChildComponent extends React.Component {
+class ChildComponent extends React.Component {
 
+    state = {
+        showJobs: false
+    }
+    handleShowHide = ()=>{
+        this.setState({
+            showJobs: !this.state.showJobs
+        })
+    }
     
-//     render() {
-//         console.log('Props:',this.props)
-//         // let name = this.props.name;
-//         // let age = this.props.age;
+    render() {
+        console.log('Props:',this.props)
+        // let name = this.props.name;
+        // let age = this.props.age;
 
-//         //Cấu trúc ngắn gọn hơn khi khai báo 1 biến của 1 props
-//         //Bắt buộc key:value ( tên của biến khai báo phải hoàn toàn giống value của props)
-//         let {name,age, arrJobs} = this.props;
-        
-//         return (
-//             <>
-//                 <div className="job-lists">
-//                 {
-//                     //Vòng lặp map
-//                     //item: từng phần tử bên trong array
-//                     //index: chỉ số của mảng này
-//                     arrJobs.map((item, index) => {
-//                         return (
-//                             <div key={item.id}>
-//                                 {item.title} - Salary: {item.salary}
-//                             </div>
-//                         )
-//                     })
-//                 }
-//                 </div>
-//             </>
-//         )
-//     }
-// }
-
-//Định nghĩa 1 Function
-const ChildComponent = (props) =>{
-    let {name,age, arrJobs} = props;
-        
-    return (
-        <>
-            <div className="job-lists">
-            {
-                //Vòng lặp map
-                //item: từng phần tử bên trong array
-                //index: chỉ số của mảng này
-                arrJobs.map((item, index) => {
-                    return (
-                        <div key={item.id}>
-                            {item.title} - Salary: {item.salary}
+        //Cấu trúc ngắn gọn hơn khi khai báo 1 biến của 1 props
+        //Bắt buộc key:value ( tên của biến khai báo phải hoàn toàn giống value của props)
+        let {name,age, arrJobs} = this.props;
+        let {showJobs} = this.state;
+        let check = showJobs === true ? 'showJobs = true' : 'showJobs = false';
+        console.log(check);
+        return (
+            
+            <>
+                {showJobs===false ?
+                    <div>
+                        <button onClick={()=>this.handleShowHide()}>
+                            Show
+                        </button>
+                    </div>
+                
+                // Câu điều kiện, cú pháp chỉ có {}, với điều kiện
+                // ở phía trước showJobs = trưe và nó sẽ thực hiện 
+                // việc sau dấu "&&" 
+                :
+                    <>
+                        <div className="job-lists">
+                        {
+                            //Vòng lặp map
+                            //item: từng phần tử bên trong array
+                            //index: chỉ số của mảng này
+                            arrJobs.map((item, index) => {
+                                return (
+                                    <div key={item.id}>
+                                        {item.title} - Salary: {item.salary}
+                                    </div>
+                                )
+                            })
+                        }
                         </div>
-                    )
-                })
-            }
-            </div>
-        </>
-    )
+                        <div>
+                            <button onClick={()=>this.handleShowHide()}>
+                                Hide
+                            </button>
+                        </div>
+                    </>
+                }
+            </>
+        )
+    }
 }
+
 
 export default ChildComponent;
