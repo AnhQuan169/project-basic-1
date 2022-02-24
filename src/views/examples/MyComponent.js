@@ -36,8 +36,18 @@ class MyComponent extends React.Component {
             arrJobs: currentJobs
         })
     }
+
+    //Giá trị state, props của quá khứ
+    componentDidUpdate(prevProps, prevState){
+        console.log("Run didupdate: ", "Previous state: ",prevState,", Current state: ",this.state);
+    }
+
+    componentDidMount(){
+        console.log("Run component did mount");
+    }
     
     render() {
+        console.log("Run state: ", this.state)
         return (    
             <>
                 <AddComponent 
