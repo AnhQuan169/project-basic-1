@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.scss';
-import MyComponent from './examples/MyComponent';
+import ListToDo from './ToDos/ListToDo';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 /**
  *  Có 2 loại Component:
@@ -22,11 +24,22 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Hello World
+          Simple ToDo Apps with React.JS
         </p>
         
-        <MyComponent />
+        <ListToDo />
       </header>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
     </div>
   );
 }
